@@ -1,4 +1,4 @@
-from _3_query_data import query_rag
+from query_data import query_rag
 from langchain_ollama import OllamaLLM
 
 EVAL_PROMPT = """
