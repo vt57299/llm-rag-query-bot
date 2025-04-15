@@ -1,4 +1,4 @@
-from embedding_function import get_embedding_function
+from _1_embedding_function import get_embedding_function
 from langchain_chroma import Chroma
 import argparse
 from langchain_ollama import OllamaLLM
@@ -59,7 +59,7 @@ def query_rag(query_text):
     response_text = model.invoke(prompt)
 
     # Extract document sources
-    sources = [doc.metadata.get("source") for doc, _score in results]
+    sources = [doc.metadata.get("id", None) for doc, _score in results]
 
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)

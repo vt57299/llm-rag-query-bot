@@ -6,7 +6,7 @@ from langchain.schema.document import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
-from embedding_function import get_embedding_function
+from _1_embedding_function import get_embedding_function
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"
@@ -82,6 +82,10 @@ def add_to_chroma(chunks: list[Document]):
         db.add_documents(new_chunks, ids = new_chunk_ids)
     else:
         print("✅ No new documents to add")
+    print("📦 Chunk IDs and content preview (all input chunks):")
+    for chunk in chunk_with_ids:
+        print(f"ID: {chunk.metadata['id']} | Content: {chunk.page_content[:60]}...\n")
+
 
 def main():
     """Main function to control document processing and vector storage."""
